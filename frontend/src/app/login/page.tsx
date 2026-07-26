@@ -36,37 +36,36 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f2f3f3' }}>
-      <div style={{ width: '400px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div style={{ width: '100%', maxWidth: '400px', padding: '20px' }}>
         <form onSubmit={handleSubmit}>
-          <Form
-            actions={
-              <SpaceBetween direction="horizontal" size="xs">
+          <Container 
+            header={<Header variant="h2">Sign in to AWS</Header>}
+            footer={
+              <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '10px' }}>
                 <Button variant="primary" loading={isSubmitting}>Sign in</Button>
-              </SpaceBetween>
+              </div>
             }
-            errorText={error}
           >
-            <Container header={<Header variant="h2">Sign in to AWS</Header>}>
-              <SpaceBetween direction="vertical" size="l">
-                <FormField label="Username">
-                  <Input
-                    value={username}
-                    onChange={({ detail }) => setUsername(detail.value)}
-                    placeholder="Enter username"
-                  />
-                </FormField>
-                <FormField label="Password">
-                  <Input
-                    value={password}
-                    onChange={({ detail }) => setPassword(detail.value)}
-                    type="password"
-                    placeholder="Enter password"
-                  />
-                </FormField>
-              </SpaceBetween>
-            </Container>
-          </Form>
+            <SpaceBetween direction="vertical" size="l">
+              {error && <Alert type="error" header="Sign in failed">{error}</Alert>}
+              <FormField label="Username">
+                <Input
+                  value={username}
+                  onChange={({ detail }) => setUsername(detail.value)}
+                  placeholder="admin"
+                />
+              </FormField>
+              <FormField label="Password">
+                <Input
+                  value={password}
+                  onChange={({ detail }) => setPassword(detail.value)}
+                  type="password"
+                  placeholder="••••••••"
+                />
+              </FormField>
+            </SpaceBetween>
+          </Container>
         </form>
       </div>
     </div>
