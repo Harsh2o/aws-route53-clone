@@ -1,0 +1,22 @@
+app = "route53-clone-api"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  # IMPORTANT: When deploying, set FRONTEND_URL as a secret or env var via Fly dashboard
+  # FRONTEND_URL = "https://your-vercel-app.vercel.app"
+  DATABASE_URL = "sqlite:////data/route53.db"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[mounts]
+  source = "sqlite_data"
+  destination = "/data"
