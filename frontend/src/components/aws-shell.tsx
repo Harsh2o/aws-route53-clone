@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import AppLayout, { AppLayoutProps } from '@cloudscape-design/components/app-layout';
 import TopNavigation from '@cloudscape-design/components/top-navigation';
 import SideNavigation from '@cloudscape-design/components/side-navigation';
+import Input from '@cloudscape-design/components/input';
 import { useAuth } from '@/contexts/auth-context';
 import BreadcrumbGroup, { BreadcrumbGroupProps } from '@cloudscape-design/components/breadcrumb-group';
 
@@ -38,17 +39,53 @@ export function AwsShell({
         <TopNavigation
           identity={{
             href: '/',
-            title: 'Route 53',
+            title: '', // Hide title text to match screenshot which only has AWS logo
             logo: {
               src: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
               alt: 'AWS'
             }
           }}
+          search={
+            <div style={{ maxWidth: '600px', width: '100%', minWidth: '300px' }}>
+              <Input
+                type="search"
+                value=""
+                onChange={() => {}}
+                placeholder="Search                      [Alt+S]"
+                ariaLabel="Search"
+              />
+            </div>
+          }
           utilities={[
             {
+              type: 'button',
+              iconSvg: <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path d="M2 3h12v10H2V3zm3 3l2.5 2L5 10m3 0h3" stroke="currentColor" strokeWidth="1.5" fill="none"/></svg>,
+              ariaLabel: 'CloudShell',
+            },
+            {
+              type: 'button',
+              iconName: 'notification',
+              ariaLabel: 'Notifications',
+            },
+            {
+              type: 'button',
+              iconSvg: <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" fill="none"/><path d="M8 11v1m0-2a2 2 0 10-2-2" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round"/></svg>,
+              ariaLabel: 'Help',
+            },
+            {
+              type: 'button',
+              iconName: 'settings',
+              ariaLabel: 'Settings',
+            },
+            {
               type: 'menu-dropdown',
-              text: user?.username || 'Guest',
-              iconName: 'user-profile',
+              text: 'Global',
+              items: [{ id: 'global', text: 'Global' }],
+            },
+            {
+              type: 'menu-dropdown',
+              text: 'Prod (253562099992)',
+              description: 'Prod',
               onItemClick: (e) => {
                 if (e.detail.id === 'signout') {
                   handleSignOut();
