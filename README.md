@@ -15,13 +15,13 @@ A full-stack implementation of core AWS Route 53 workflows built with Next.js, F
 <details>
 <summary><b>1. Route 53 Dashboard</b></summary>
 <br/>
-<img src="./docs/dashboard.png" alt="Route 53 Dashboard" />
+<img src="./docs/hosted_zones.png" alt="Route 53 Dashboard" />
 </details>
 
 <details>
 <summary><b>2. Hosted Zones / Create Record</b></summary>
 <br/>
-<img src="./docs/hosted_zones.png" alt="Hosted Zones" />
+<img src="./docs/dashboard.png" alt="Hosted Zones" />
 </details>
 
 <details>
@@ -29,8 +29,6 @@ A full-stack implementation of core AWS Route 53 workflows built with Next.js, F
 <br/>
 <img src="./docs/login.png" alt="Login Screen" />
 </details>
-
-*(Note: Ensure screenshots are saved in the `docs` folder as `dashboard.png`, `hosted_zones.png`, and `login.png`)*
 
 ---
 
