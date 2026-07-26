@@ -26,12 +26,12 @@
 
 <br/>
 
-> 💡 **Demo Credentials:** 
+>  **Demo Credentials:** 
 > Username: `admin` | Password: `admin123`
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 <table>
   <tr>
@@ -52,7 +52,7 @@
 
 ---
 
-## ✨ Features
+##  Features
 
 - **AWS-Styled Interface**: Authentic Cloudscape-based interface modeled strictly after the Route 53 console.
 - **Hosted Zones Management**: Create, view, and delete Public or Private hosted zones. 
@@ -62,7 +62,7 @@
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```mermaid
 graph TD
@@ -83,7 +83,7 @@ graph TD
 
 ---
 
-## 🗄️ Database Schema
+##  Database Schema
 
 ```text
 User                      HostedZone                    DNSRecord
@@ -100,7 +100,7 @@ Session                    ├── description               ├── ttl
 
 ---
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 | Method | Endpoint                         | Purpose           |
 | ------ | -------------------------------- | ----------------- |
@@ -117,7 +117,7 @@ Session                    ├── description               ├── ttl
 
 ---
 
-## 🚀 Local Setup
+##  Local Setup
 
 ### 1. Backend Setup (FastAPI)
 
@@ -141,7 +141,7 @@ npm run dev
 
 ---
 
-## 🧠 Design Decisions & Limitations
+##  Design Decisions & Limitations
 
 - **Route 53 Behavior:** Creating a hosted zone automatically generates system-level `NS` and `SOA` records. These system records are protected and cannot be manually edited or deleted. Hosted-zone IDs explicitly mimic the AWS `/hostedzone/Z...` format.
 - **Dynamic Forms:** Record creation forms dynamically change structure and validation according to the selected DNS type (e.g., SRV vs A records).
