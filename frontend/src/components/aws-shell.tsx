@@ -122,28 +122,24 @@ export function AwsShell({
               { type: 'link', text: 'Dashboard', href: '/' },
               { type: 'link', text: 'Hosted zones', href: '/hosted-zones' },
               { type: 'link', text: 'Health checks', href: '/health-checks' },
+              { type: 'link', text: 'Profiles', href: '/profiles' },
               {
                 type: 'section',
-                text: 'Traffic management',
+                text: 'Global Resolver',
                 items: [
-                  { type: 'link', text: 'Traffic policies', href: '/traffic-policies' },
+                  { type: 'link', text: 'Global resolvers', href: '#', info: <span style={{ color: '#0073bb', fontSize: '11px', marginLeft: '4px' }}>New</span> },
                 ],
               },
               {
                 type: 'section',
-                text: 'Routing control',
+                text: 'VPC Resolver',
                 items: [
-                  { type: 'link', text: 'Application recovery', href: '#' },
-                ],
-              },
-              {
-                type: 'section',
-                text: 'Resolver',
-                items: [
-                  { type: 'link', text: 'VPCs and inbound endpoints', href: '/resolver' },
+                  { type: 'link', text: 'VPCs', href: '#' },
+                  { type: 'link', text: 'Inbound endpoints', href: '#' },
                   { type: 'link', text: 'Outbound endpoints', href: '#' },
                   { type: 'link', text: 'Rules', href: '#' },
-                  { type: 'link', text: 'DNS Firewall', href: '#' },
+                  { type: 'link', text: 'Query logging', href: '#' },
+                  { type: 'link', text: 'Outposts', href: '#' },
                 ],
               },
               {
@@ -151,11 +147,16 @@ export function AwsShell({
                 text: 'Domains',
                 items: [
                   { type: 'link', text: 'Registered domains', href: '#' },
-                  { type: 'link', text: 'Pending requests', href: '#' },
-                  { type: 'link', text: 'Transfer in', href: '#' },
+                  { type: 'link', text: 'Requests', href: '#' },
                 ],
               },
-              { type: 'link', text: 'Profiles', href: '/profiles' },
+              {
+                type: 'section',
+                text: 'IP-based routing',
+                items: [
+                  { type: 'link', text: 'CIDR collections', href: '#' },
+                ],
+              },
             ]}
             header={{ href: '/', text: 'Route 53' }}
           />

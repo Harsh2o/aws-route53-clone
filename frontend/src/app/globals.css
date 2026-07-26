@@ -14,12 +14,12 @@ body {
 
 /* Force AWS Console Top Nav styling for Dark Mode */
 #top-nav {
-  background-color: #000000;
+  background-color: #16191f;
 }
 
 #top-nav .awsui-context-top-navigation,
 #top-nav [class*="top-navigation"] {
-  background-color: #000000 !important;
+  background-color: #16191f !important;
 }
 
 /* Top Nav logo exact sizing */
