@@ -36,26 +36,6 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#fcfcfc', fontFamily: '"Helvetica Neue", Roboto, Arial, sans-serif', color: '#16191f', position: 'relative', backgroundImage: 'radial-gradient(circle at 10% 20%, rgba(240, 242, 245, 0.4) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(240, 242, 245, 0.4) 0%, transparent 50%)' }}>
-      
-      {/* Top Navigation Bar */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 40px', position: 'absolute', top: 0, left: 0, right: 0 }}>
-        <div style={{ flex: 1 }}></div>
-        <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-          <svg width="60" height="36" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 48C75 48 90 33 90 33C90 33 78 40 50 40C22 40 10 33 10 33C10 33 25 48 50 48Z" fill="#FF9900"/>
-            <path d="M85 23L95 33L80 43" fill="#FF9900"/>
-            <text x="50" y="25" fontFamily="Arial, sans-serif" fontSize="28" fontWeight="bold" fill="#232F3E" textAnchor="middle">AWS</text>
-          </svg>
-        </div>
-        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: '20px', fontSize: '14px', fontWeight: 'bold', color: '#0073bb' }}>
-          <span style={{ cursor: 'pointer' }}>Provide feedback</span>
-          <span style={{ cursor: 'pointer' }}>Multi-session disabled ▼</span>
-          <span style={{ cursor: 'pointer' }}>English ▼</span>
-        </div>
-      </div>
-
-  return (
     <div style={{ 
       minHeight: '100vh', 
       backgroundColor: '#f8f8f8', 
