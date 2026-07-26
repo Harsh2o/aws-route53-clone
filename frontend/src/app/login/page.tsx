@@ -91,60 +91,66 @@ export default function LoginPage() {
                     User type (<span style={{ textDecoration: 'underline', cursor: 'pointer', color: '#545b64' }}>not sure?</span>)
                   </div>
 
-                  {/* Root User (Selected) */}
+                  {/* Root User (Unselected) */}
                   <div style={{ 
-                    border: '2px solid #0073bb', 
+                    border: '1px solid #d5dbdb', 
                     borderRadius: '8px', 
                     padding: '12px 16px', 
                     marginBottom: '8px',
-                    backgroundColor: '#f2f8fd',
+                    backgroundColor: '#ffffff',
                     cursor: 'pointer'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                      <div style={{ width: '16px', height: '16px', borderRadius: '50%', border: '2px solid #545b64', marginRight: '12px', marginTop: '2px' }}></div>
+                      <div>
+                        <div style={{ fontWeight: '400', fontSize: '13px', color: '#16191f' }}>Root user</div>
+                        <div style={{ fontSize: '12px', color: '#545b64', marginTop: '2px', lineHeight: '1.4' }}>Account owner that performs tasks requiring unrestricted access.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* IAM User (Selected) */}
+                  <div style={{ 
+                    border: '2px solid #0073bb', 
+                    borderRadius: '8px', 
+                    padding: '13px 16px', 
+                    cursor: 'pointer',
+                    backgroundColor: '#f2f8fd'
                   }}>
                     <div style={{ display: 'flex', alignItems: 'flex-start' }}>
                       <div style={{ width: '16px', height: '16px', borderRadius: '50%', border: '2px solid #0073bb', marginRight: '12px', marginTop: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ width: '8px', height: '8px', backgroundColor: '#0073bb', borderRadius: '50%' }}></div>
                       </div>
                       <div>
-                        <div style={{ fontWeight: '700', fontSize: '13px', color: '#16191f' }}>Root user</div>
-                        <div style={{ fontSize: '12px', color: '#545b64', marginTop: '2px', lineHeight: '1.4' }}>Account owner that performs tasks requiring unrestricted access.</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* IAM User (Unselected) */}
-                  <div style={{ 
-                    border: '1px solid #d5dbdb', 
-                    borderRadius: '8px', 
-                    padding: '13px 16px', 
-                    cursor: 'pointer',
-                    backgroundColor: '#ffffff'
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                      <div style={{ width: '16px', height: '16px', borderRadius: '50%', border: '2px solid #545b64', marginRight: '12px', marginTop: '2px' }}></div>
-                      <div>
-                        <div style={{ fontWeight: '400', fontSize: '13px', color: '#16191f' }}>IAM user</div>
+                        <div style={{ fontWeight: '700', fontSize: '13px', color: '#16191f' }}>IAM user</div>
                         <div style={{ fontSize: '12px', color: '#545b64', marginTop: '2px', lineHeight: '1.4' }}>User within an account that performs daily tasks.</div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div style={{ marginBottom: '24px' }}>
-                  <label style={{ display: 'block', fontWeight: '700', fontSize: '13px', marginBottom: '6px', color: '#16191f' }}>Email address</label>
+                <div style={{ marginBottom: '16px' }}>
+                  <label style={{ display: 'block', fontWeight: '700', fontSize: '13px', marginBottom: '6px', color: '#16191f' }}>IAM user name</label>
                   <input 
                     type="text" 
                     value={username} 
                     onChange={(e) => setUsername(e.target.value)} 
                     style={{ width: '100%', padding: '8px 12px', borderRadius: '4px', border: '1px solid #879596', fontSize: '13px', outline: 'none', backgroundColor: '#ffffff', color: '#16191f' }}
-                    placeholder="username@example.com"
+                    placeholder="admin"
                   />
-                  {/* Password field hidden but fully functional for our fake login to still work */}
+                </div>
+
+                <div style={{ marginBottom: '24px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                    <label style={{ fontWeight: '700', fontSize: '13px', color: '#16191f' }}>Password</label>
+                    <a href="#" style={{ color: '#0073bb', textDecoration: 'none', fontSize: '12px' }}>Forgot password?</a>
+                  </div>
                   <input 
                     type="password" 
                     value={password} 
                     onChange={(e) => setPassword(e.target.value)} 
-                    style={{ width: 0, height: 0, opacity: 0, position: 'absolute' }}
-                    tabIndex={-1}
+                    style={{ width: '100%', padding: '8px 12px', borderRadius: '4px', border: '1px solid #879596', fontSize: '13px', outline: 'none', backgroundColor: '#ffffff', color: '#16191f' }}
+                    placeholder="••••••••"
                   />
                 </div>
 
@@ -165,7 +171,7 @@ export default function LoginPage() {
                     marginBottom: '16px'
                   }}
                 >
-                  Next
+                  {isSubmitting ? 'Signing in...' : 'Sign in'}
                 </button>
 
                 <div style={{ display: 'flex', alignItems: 'center', margin: '16px 0' }}>
