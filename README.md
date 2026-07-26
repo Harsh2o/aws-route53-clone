@@ -31,14 +31,14 @@
 <table>
   <tr>
     <td align="center" width="50%"><b>Route 53 Dashboard</b></td>
-    <td align="center" width="50%"><b>Hosted Zones & Records</b></td>
+    <td align="center" width="50%"><b>Authentication (IAM Login)</b></td>
   </tr>
   <tr>
     <td valign="top"><img src="https://github.com/user-attachments/assets/9d1ef4a3-7cad-49bc-92ad-4bdd7078c6e2" alt="Dashboard" width="100%" /></td>
     <td valign="top"><img src="https://github.com/user-attachments/assets/394d599d-c3f9-408e-aa7c-4e51798635c2" alt="Hosted Zones" width="100%" /></td>
   </tr>
   <tr>
-    <td align="center" colspan="2"><b>Authentication (IAM Login)</b></td>
+    <td align="center" colspan="2"><b>Hosted Zones & Records</b></td>
   </tr>
   <tr>
     <td colspan="2" align="center"><img src="https://github.com/user-attachments/assets/8eee4be8-12e9-4eb3-8440-6ea1d0db4aa1" alt="Login" width="75%" /></td>
