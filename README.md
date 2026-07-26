@@ -4,8 +4,8 @@
   <h1 align="center">AWS Route 53 Console Clone</h1>
   
   <p align="center">
-    <strong>A high-fidelity, full-stack implementation of core AWS Route 53 workflows.</strong><br/>
-    Built with Next.js, FastAPI, and SQLite to recreate hosted-zone and DNS-record management.
+    <strong>A high fidelity, full stack implementation of core AWS Route 53 workflows.</strong><br/>
+    Built with Next.js, FastAPI, and SQLite to recreate hosted zone and DNS record management.
   </p>
 
  
@@ -49,7 +49,7 @@
 
 ##  Features
 
-- **AWS-Styled Interface**: Authentic Cloudscape-based interface modeled strictly after the Route 53 console.
+- **AWS Styled Interface**: Authentic Cloudscape based interface modeled strictly after the Route 53 console.
 - **Hosted Zones Management**: Create, view, and delete Public or Private hosted zones. 
 - **DNS Records Management**: Comprehensive support for 9 DNS record types (`A`, `AAAA`, `CNAME`, `TXT`, `MX`, `NS`, `PTR`, `SRV`, `CAA`).
 - **Data Synchronization**: TanStack Query handles API caching, invalidation, and seamless loading states.
@@ -138,7 +138,7 @@ npm run dev
 
 ##  Design Decisions & Limitations
 
-- **Route 53 Behavior:** Creating a hosted zone automatically generates system-level `NS` and `SOA` records. These system records are protected and cannot be manually edited or deleted. Hosted-zone IDs explicitly mimic the AWS `/hostedzone/Z...` format.
+- **Route 53 Behavior:** Creating a hosted zone automatically generates system level `NS` and `SOA` records. These system records are protected and cannot be manually edited or deleted. Hosted zone IDs explicitly mimic the AWS `/hostedzone/Z...` format.
 - **Dynamic Forms:** Record creation forms dynamically change structure and validation according to the selected DNS type (e.g., SRV vs A records).
 - **Mocked AWS Infrastructure:** For "Private" hosted zones, the AWS Region and VPC ID dropdowns are purely visual implementations to demonstrate conditional UI rendering matching Route 53.
 - **Synchronous Operations:** Real DNS propagation takes time, but in this clone, record creation and deletion are handled synchronously for immediate user feedback.
