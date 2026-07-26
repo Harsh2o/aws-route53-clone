@@ -1,18 +1,6 @@
-<div align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo" width="100" />
-  <h1>AWS Route 53 Console Clone</h1>
-  <p>A high-fidelity, full-stack clone of the Amazon Web Services (AWS) Route 53 Management Console.</p>
+# AWS Route 53 Console Clone
 
-  <div>
-    <img src="https://img.shields.io/badge/Next.js-14-000000?style=for-the-badge&logo=next.js" alt="Next.js" />
-    <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
-    <img src="https://img.shields.io/badge/Cloudscape-Design-232F3E?style=for-the-badge&logo=amazon-aws" alt="Cloudscape" />
-    <img src="https://img.shields.io/badge/FastAPI-0.104-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
-    <img src="https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
-  </div>
-</div>
-
-<br />
+A full-stack implementation of core AWS Route 53 workflows built with Next.js, FastAPI, and SQLite. The project recreates hosted-zone and DNS-record management using AWS Cloudscape components, with mocked authentication and AWS-dependent services.
 
 > **Live Demo:** [View Live Application Here](https://aws-route53-clone-git-main-harsh2os-projects.vercel.app/login) 
 > 
@@ -22,86 +10,156 @@
 
 ---
 
-## 🎯 Project Overview
+## Screenshots
 
-This project is a comprehensive full-stack clone of the **AWS Route 53 Console**. Built as part of a highly rigorous engineering assessment, it demonstrates modern full-stack development practices, deep architectural planning, and an uncompromising commitment to pixel-perfect UI replication using the official **AWS Cloudscape Design System**.
+<details>
+<summary><b>1. Route 53 Dashboard</b></summary>
+<br/>
+<img src="./docs/dashboard.png" alt="Route 53 Dashboard" />
+</details>
 
-## ✨ Key Features
+<details>
+<summary><b>2. Hosted Zones / Create Record</b></summary>
+<br/>
+<img src="./docs/hosted_zones.png" alt="Hosted Zones" />
+</details>
 
-- **Pixel-Perfect AWS UI**: Faithfully replicates the exact look, feel, and layout of the real AWS Management Console (including Dark Mode, Dashboard, and Login flows).
-- **Hosted Zones Management**: Create, view, and delete Public or Private hosted zones with dynamic conditional rendering for VPC assignments.
-- **DNS Records Management**: Comprehensive support for 9 DNS record types (`A`, `AAAA`, `CNAME`, `TXT`, `MX`, `NS`, `PTR`, `SRV`, `CAA`).
-- **Dynamic Form Validation**: The "Create Record" modal intelligently adapts its input fields based on the selected Record Type (e.g., dynamically requiring Priority/Weight/Port for SRV records).
-- **System Record Protection**: `NS` and `SOA` records are automatically generated and strictly protected from manual editing or deletion, mimicking real DNS behavior.
-- **Robust Authentication**: Secure, stateful cookie-based JWT authentication (`HttpOnly` cookies) using OAuth2 Password Bearer flow.
-- **Advanced State Management**: Utilizes React Query for flawless data synchronization, caching, and loading states.
+<details>
+<summary><b>3. Login Screen</b></summary>
+<br/>
+<img src="./docs/login.png" alt="Login Screen" />
+</details>
 
-## 🏗️ Architecture & Tech Stack
-
-This repository is structured as a decoupled monorepo:
-
-### Frontend
-- **Framework:** Next.js 14 (App Router)
-- **UI Library:** AWS Cloudscape Design System
-- **State Management:** TanStack React Query v5
-- **Styling:** CSS Modules & Global overrides
-
-### Backend
-- **Framework:** FastAPI (Python)
-- **Database:** SQLite (Dev) / PostgreSQL (Production)
-- **ORM:** SQLAlchemy with Pydantic schemas
-- **Auth:** JWT (JSON Web Tokens) with Bcrypt password hashing
+*(Note: Ensure screenshots are saved in the `docs` folder as `dashboard.png`, `hosted_zones.png`, and `login.png`)*
 
 ---
 
-## 🚀 Getting Started
+## Features
 
-Follow these instructions to run the project locally.
+- **AWS-Styled Interface**: AWS Cloudscape-based interface modeled strictly after the Route 53 console.
+- **Hosted Zones Management**: Create, view, and delete Public or Private hosted zones. 
+- **DNS Records Management**: Comprehensive support for 9 DNS record types (`A`, `AAAA`, `CNAME`, `TXT`, `MX`, `NS`, `PTR`, `SRV`, `CAA`).
+- **Data Synchronization**: TanStack Query handles API caching, invalidation, and loading states.
+- **Authentication**: Mock authentication using bcrypt password hashing and HttpOnly session cookies.
+
+---
+
+## Architecture
+
+```mermaid
+graph TD
+    Client[Next.js 14 + TypeScript]
+    
+    Client -- "REST / JSON<br/>HttpOnly authentication cookie" --> API[FastAPI]
+    
+    API -- "Authentication" --> AuthLogic
+    API -- "Hosted Zones" --> ZoneLogic
+    API -- "DNS Records" --> RecordLogic
+    
+    AuthLogic --> ORM[SQLAlchemy]
+    ZoneLogic --> ORM
+    RecordLogic --> ORM
+    
+    ORM --> DB[(SQLite)]
+```
+
+---
+
+## Tech Stack
+
+- **Frontend:** Next.js 14 (App Router), React, AWS Cloudscape Design System, TanStack React Query v5
+- **Backend:** FastAPI (Python), SQLAlchemy, SQLite
+- **Authentication:** JWT (JSON Web Tokens) with HttpOnly cookies, Bcrypt
+
+---
+
+## Database Schema
+
+```text
+User
+ ├── id
+ ├── username
+ └── password_hash
+
+HostedZone
+ ├── id
+ ├── aws_zone_id
+ ├── name
+ ├── type
+ ├── description
+ └── user_id
+
+DNSRecord
+ ├── id
+ ├── zone_id
+ ├── name
+ ├── type
+ ├── ttl
+ ├── value
+ └── routing_policy
+
+Session
+ ├── id
+ ├── user_id
+ ├── token
+ └── expires_at
+```
+
+**Relationships:**
+`User 1 → N HostedZone → N DNSRecord`
+
+---
+
+## API Endpoints
+
+| Method | Endpoint                         | Purpose           |
+| ------ | -------------------------------- | ----------------- |
+| POST   | `/api/v1/auth/login`             | Authenticate      |
+| POST   | `/api/v1/auth/logout`            | End session       |
+| GET    | `/api/v1/auth/me`                | Current user      |
+| GET    | `/api/v1/hosted-zones`           | List/search zones |
+| POST   | `/api/v1/hosted-zones`           | Create zone       |
+| GET    | `/api/v1/hosted-zones/{id}`      | Get zone details  |
+| DELETE | `/api/v1/hosted-zones/{id}`      | Delete zone       |
+| GET    | `/api/v1/hosted-zones/{id}/records`| List records    |
+| POST   | `/api/v1/hosted-zones/{id}/records`| Create record   |
+| DELETE | `/api/v1/hosted-zones/{id}/records/{record_id}`| Delete record |
+
+---
+
+## Local Setup
 
 ### 1. Backend Setup
 
 ```bash
 cd backend
-
-# Create and activate a virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-
-# Install dependencies
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
-
-# Seed the database (Creates the admin user and test data)
-python seed_demo.py
-
-# Run the FastAPI server
+python seed_demo.py       # Seeds the database with admin user
 uvicorn app.main:app --reload --port 8000
 ```
-*The backend API will be running at `http://localhost:8000`.*
-*Interactive API Documentation (Swagger) is available at `http://localhost:8000/docs`.*
 
 ### 2. Frontend Setup
 
 ```bash
 cd frontend
-
-# Install dependencies
 npm install
-
-# Run the development server
 npm run dev
 ```
-*The frontend will be running at `http://localhost:3000`.*
+*Frontend will be running at `http://localhost:3000`.*
 
 ---
 
-## 📝 Design Decisions & Assumptions
+## Testing
 
-- **Mocked AWS Infrastructure**: For "Private" hosted zones, the AWS Region and VPC ID dropdowns are purely visual implementations to demonstrate conditional UI rendering matching Route 53.
-- **Synchronous Operations**: Real DNS propagation takes time, but in this clone, record creation and deletion are handled synchronously for immediate user feedback.
-- **UI Placeholders**: Dashboard metrics and some sidebar navigation items (like Traffic Policies) are visually present to complete the authentic AWS Console illusion, focusing the functional implementation specifically on Hosted Zones and DNS management.
+*To be implemented in future iterations.*
 
 ---
 
-<div align="center">
-  <i>Built with passion and precision.</i>
-</div>
+## Design Decisions, Mocked Functionality & Limitations
+
+- **Route 53 behavior implemented:** Creating a hosted zone automatically generates system-level `NS` and `SOA` records. These system records are protected and cannot be manually edited or deleted by the user. Hosted-zone IDs explicitly mimic the AWS `/hostedzone/Z...` format.
+- **Dynamic forms:** Record creation forms dynamically change structure and validation according to the selected DNS type (e.g. SRV vs A records).
+- **Mocked AWS Infrastructure:** For "Private" hosted zones, the AWS Region and VPC ID dropdowns are purely visual implementations to demonstrate conditional UI rendering matching Route 53.
+- **Synchronous Operations:** Real DNS propagation takes time, but in this clone, record creation and deletion are handled synchronously for immediate user feedback.
