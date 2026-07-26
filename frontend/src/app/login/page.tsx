@@ -118,7 +118,7 @@ export default function LoginPage() {
                     backgroundColor: '#f2f8fd'
                   }}>
                     <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                      <div style={{ width: '16px', height: '16px', borderRadius: '50%', border: '2px solid #0073bb', marginRight: '12px', marginTop: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <div style={{ width: '16px', height: '16px', borderRadius: '50%', border: '2px solid #0073bb', marginRight: '12px', marginTop: '2px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexShrink: 0 }}>
                         <div style={{ width: '8px', height: '8px', backgroundColor: '#0073bb', borderRadius: '50%' }}></div>
                       </div>
                       <div>
@@ -150,7 +150,7 @@ export default function LoginPage() {
                     value={password} 
                     onChange={(e) => setPassword(e.target.value)} 
                     style={{ width: '100%', padding: '8px 12px', borderRadius: '4px', border: '1px solid #879596', fontSize: '13px', outline: 'none', backgroundColor: '#ffffff', color: '#16191f' }}
-                    placeholder="••••••••"
+                    placeholder="admin123"
                   />
                 </div>
 

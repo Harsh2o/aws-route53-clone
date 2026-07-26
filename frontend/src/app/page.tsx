@@ -46,7 +46,6 @@ export default function DashboardPage() {
         <Box padding={{ top: 'm' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Header variant="h1">Route 53 Dashboard</Header>
-            <Link href="#">Info</Link>
           </div>
         </Box>
         
@@ -127,7 +126,9 @@ export default function DashboardPage() {
         >
           <SpaceBetween size="l">
             <div style={{ display: 'flex', border: '1px solid #414d5c', borderRadius: '8px', padding: '6px 12px', alignItems: 'center' }}>
-              <span style={{ color: '#aab7b8', marginRight: '8px' }}>🔍</span>
+              <svg width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '8px', color: '#aab7b8' }}>
+                <path d="M10.435 9.385l3.87 3.869-1.05 1.05-3.87-3.87A5.5 5.5 0 1111.5 5.5a5.47 5.47 0 01-1.065 3.885zM5.5 10A4.5 4.5 0 105.5 1a4.5 4.5 0 000 9z" fill="currentColor"/>
+              </svg>
               <input 
                 type="text" 
                 placeholder="Find notifications" 
