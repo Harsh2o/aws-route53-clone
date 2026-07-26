@@ -101,7 +101,7 @@ export default function LoginPage() {
                     cursor: 'pointer'
                   }}>
                     <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                      <div style={{ width: '16px', height: '16px', borderRadius: '50%', border: '2px solid #545b64', marginRight: '12px', marginTop: '2px' }}></div>
+                      <div style={{ width: '16px', height: '16px', borderRadius: '50%', border: '2px solid #545b64', marginRight: '12px', marginTop: '2px', flexShrink: 0 }}></div>
                       <div>
                         <div style={{ fontWeight: '400', fontSize: '13px', color: '#16191f' }}>Root user</div>
                         <div style={{ fontSize: '12px', color: '#545b64', marginTop: '2px', lineHeight: '1.4' }}>Account owner that performs tasks requiring unrestricted access.</div>
