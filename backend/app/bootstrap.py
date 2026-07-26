@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from app.models.user import User
 from app.models.hosted_zone import HostedZone
 from app.models.dns_record import DNSRecord
-from app.services.auth import get_password_hash
+from app.services.auth import hash_password
 
 def bootstrap_database(db: Session):
     # Check if database is already populated
@@ -12,7 +12,7 @@ def bootstrap_database(db: Session):
     # Create admin user
     admin_user = User(
         username="admin",
-        hashed_password=get_password_hash("admin123")
+        hashed_password=hash_password("admin123")
     )
     db.add(admin_user)
     db.commit()
