@@ -8,12 +8,7 @@
     Built with Next.js, FastAPI, and SQLite to recreate hosted-zone and DNS-record management.
   </p>
 
-  <p align="center">
-    <a href="https://aws-route53-clone-git-main-harsh2os-projects.vercel.app/login"><b>Live Demo</b></a> •
-    <a href="#-features"><b>Features</b></a> •
-    <a href="#-architecture"><b>Architecture</b></a> •
-    <a href="#-local-setup"><b>Setup</b></a>
-  </p>
+ 
   
   <p align="center">
     <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
