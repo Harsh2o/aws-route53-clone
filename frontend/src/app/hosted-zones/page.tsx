@@ -21,14 +21,24 @@ import Link from '@cloudscape-design/components/link';
 import { apiGet, apiPost, apiDelete } from '@/lib/api';
 import { HostedZone, PaginatedResponse } from '@/types/api';
 import { AwsShell } from '@/components/aws-shell';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function HostedZonesPage() {
   const queryClient = useQueryClient();
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
+  const { user, loading: authLoading } = useAuth();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/login');
+    }
+  }, [user, authLoading, router]);
   
   // State for search and pagination
   const [searchValue, setSearchValue] = useState('');

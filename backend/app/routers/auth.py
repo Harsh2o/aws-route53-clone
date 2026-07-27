@@ -21,7 +21,7 @@ def login(user_in: UserLogin, response: Response, db: Session = Depends(get_db))
         samesite="none",
         secure=True # Required for cross-site cookies
     )
-    return {"message": "Logged in successfully"}
+    return {"message": "Logged in successfully", "token": session.token}
 
 @router.post("/logout")
 def logout(request: Request, response: Response, db: Session = Depends(get_db)):

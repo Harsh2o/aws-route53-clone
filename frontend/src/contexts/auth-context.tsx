@@ -47,6 +47,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       throw new Error(errorMessage);
     }
     
+    try {
+      const data = await response.json();
+      if (data.token) {
+        localStorage.setItem('session_token', data.token);
+      }
+    } catch (e) {}
+    
     // Depending on backend, the token could be in cookies (HttpOnly) or response body.
     // Assuming backend sets HttpOnly cookie for session management.
     await refetch();
@@ -58,6 +65,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (e) {
       console.error('Logout error', e);
     } finally {
+      localStorage.removeItem('session_token');
       queryClient.setQueryData(['auth', 'me'], null);
       queryClient.clear();
       // Optionally redirect to login here, but usually handled by components
